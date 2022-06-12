@@ -1,0 +1,13 @@
+app.post('/contact',(req , res)=>{
+  name = req.body.name
+  phone = req.body.phone
+  email = req.body.email
+  address = req.body.address
+  concern = req.body.desc
+  
+  let outputToWrite = `the name of the client is ${name}, email: ${email}, phone number: ${phone},  residing at ${address}.his concern is: ${concern}`
+  fs.writeFileSync('output.txt', outputToWrite)
+
+  const params = {'message': 'your form has been submitted successfully'}
+res.status(200).render('contact.pug', params)
+})
